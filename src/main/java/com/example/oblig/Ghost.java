@@ -1,0 +1,67 @@
+package com.example.oblig;
+
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
+import static com.example.oblig.PacMan.alive;
+
+public class Ghost {
+    Rectangle GhostRed;
+    Rectangle GhostBlue;
+    Rectangle GhostPink;
+    Rectangle GhostOrange;
+    Map map = new Map();
+    public Ghost() throws InterruptedException {
+        this.GhostRed = GhostRed;
+        this.GhostBlue = GhostBlue;
+        this.GhostPink = GhostPink;
+        this.GhostOrange = GhostOrange;
+        //RED
+        GhostRed = new Rectangle(30*14,30*13,30,30);
+        GhostRed.setFill(Color.RED);
+        //movement(GhostRed);
+        //BLUE
+        GhostBlue = new Rectangle(30*15,30*13,30,30);
+        GhostBlue.setFill(Color.CYAN);
+        //movement(GhostBlue);
+        //PINK
+        GhostPink = new Rectangle(30*12,30*13,30,30);
+        GhostPink.setFill(Color.PINK);
+        //movement(GhostPink);
+        //ORANGE
+        GhostOrange = new Rectangle(30*13,30*13,30,30);
+        GhostOrange.setFill(Color.ORANGE);
+        //movement(GhostOrange);
+
+    }
+
+   /* private Rectangle movement(Rectangle enemy) throws InterruptedException {
+        Rectangle monster = new Rectangle();
+        while (alive) {
+
+            Thread.sleep(1000);
+            int i= (int) (Math.random() * 4 + 1);
+            System.out.println(i);
+
+            if (i == 1) {
+                enemy.setLayoutX(setLayout() + 10.0);
+                System.out.println(enemy + "Right");
+            } else if (i == 2) {
+                enemy.setLayoutX(enemy.getLayoutX() - 10.0);
+                System.out.println("Left");
+            } else if (i == 3) {
+                enemy.setLayoutY(enemy.getLayoutY() + 10.0);
+                System.out.println("Down");
+            } else if (i == 4) {
+                enemy.setLayoutY(enemy.getLayoutY() - 10.0);
+                System.out.println("Up");
+            } else {
+                alive = false;
+            }
+        }
+        return enemy;
+    */
+}
+
+
+
