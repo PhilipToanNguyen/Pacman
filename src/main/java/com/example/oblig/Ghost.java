@@ -10,57 +10,57 @@ public class Ghost {
     Rectangle GhostBlue;
     Rectangle GhostPink;
     Rectangle GhostOrange;
-    Map map = new Map();
+
     public Ghost() throws InterruptedException {
         this.GhostRed = GhostRed;
         this.GhostBlue = GhostBlue;
         this.GhostPink = GhostPink;
         this.GhostOrange = GhostOrange;
         //RED
-        GhostRed = new Rectangle(30*14,30*13,30,30);
+        GhostRed = new Rectangle(30 * 14, 30 * 13, 30, 30);
         GhostRed.setFill(Color.RED);
-        //movement(GhostRed);
+        // movement(GhostRed);
         //BLUE
-        GhostBlue = new Rectangle(30*15,30*13,30,30);
+        GhostBlue = new Rectangle(30 * 15, 30 * 13, 30, 30);
         GhostBlue.setFill(Color.CYAN);
-        //movement(GhostBlue);
+        // movement(GhostBlue);
         //PINK
-        GhostPink = new Rectangle(30*12,30*13,30,30);
+        GhostPink = new Rectangle(30 * 12, 30 * 13, 30, 30);
         GhostPink.setFill(Color.PINK);
         //movement(GhostPink);
         //ORANGE
-        GhostOrange = new Rectangle(30*13,30*13,30,30);
+        GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
-        //movement(GhostOrange);
+        // movement(GhostOrange);
 
     }
 
-   /* private Rectangle movement(Rectangle enemy) throws InterruptedException {
-        Rectangle monster = new Rectangle();
+    private Rectangle movement(Rectangle monster) throws InterruptedException {
+
         while (alive) {
 
-            Thread.sleep(1000);
-            int i= (int) (Math.random() * 4 + 1);
-            System.out.println(i);
+            Thread.sleep(500);
+            int i = (int) (Math.random() * 4 + 1);
 
             if (i == 1) {
-                enemy.setLayoutX(setLayout() + 10.0);
-                System.out.println(enemy + "Right");
+                monster.setLayoutX(monster.getLayoutY() + 6.0);
+                System.out.println("Right");
             } else if (i == 2) {
-                enemy.setLayoutX(enemy.getLayoutX() - 10.0);
+                monster.setLayoutX(monster.getLayoutX() - 6.0);
                 System.out.println("Left");
             } else if (i == 3) {
-                enemy.setLayoutY(enemy.getLayoutY() + 10.0);
+                monster.setLayoutY(monster.getLayoutY() + 6.0);
                 System.out.println("Down");
             } else if (i == 4) {
-                enemy.setLayoutY(enemy.getLayoutY() - 10.0);
+                monster.setLayoutY(monster.getLayoutY() - 6.0);
                 System.out.println("Up");
             } else {
                 alive = false;
             }
         }
-        return enemy;
-    */
+        return monster;
+
+    }
 }
 
 

@@ -19,9 +19,12 @@ public class PacMan {
 
     public static boolean alive = true;
     Circle pacman;
+    int x = 30;
+    int y = 30;
+
     public PacMan() {
         this.pacman = pacman;
-        pacman = new Circle(15*28,15*45,12);
+        pacman = new Circle(30*14,15*45,12);
         pacman.setFill(Color.YELLOW);
 
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
@@ -32,28 +35,26 @@ public class PacMan {
                     TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
                     translate.setByX(6);
                     translate.play();
-                    //pacman.setLayoutX(pacman.getLayoutX() + 6);
-
-                } else if (event.getCode() == KeyCode.LEFT) {
+                }
+                else if (event.getCode() == KeyCode.LEFT) {
                     TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
                     translate.setByX(-6);
                     translate.play();
-                    //pacman.setLayoutX(pacman.getLayoutX() - 6);
                 }
                 else if (event.getCode() == KeyCode.DOWN) {
                     TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
                     translate.setByY(6);
                     translate.play();
-                    //pacman.setLayoutY(pacman.getLayoutY() + 6);
                 }
                 else if (event.getCode() == KeyCode.UP) {
                     TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
                     translate.setByY(-6);
                     translate.play();
-                    //pacman.setLayoutY(pacman.getLayoutY() - 6);
                 }
             }
+
         });
+
     }
     }
 

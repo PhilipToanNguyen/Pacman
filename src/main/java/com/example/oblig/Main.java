@@ -57,15 +57,14 @@ public class Main extends Application {
         highScoreLabel.setFont(Font.font("Comic Sans MS", 18));
         highScoreLabel.setPrefWidth(150);
 
-
-
-        //MAP
-        Map kart = new Map();
         //SCOREINFO
         VBox scoreinfo = new VBox(0, currentScoreLabel, highScoreLabel);
         scoreinfo.setPadding(new Insets(screenHeight/2,screenHeight/2,30*10,30*11));
         highScoreLabel.setStyle("-fx-text-fill: Green;");
         currentScoreLabel.setStyle("-fx-text-fill: Red;");
+
+        //Map
+        Map kart = new Map();
         //PLAYER
         PacMan player = new PacMan();
         //RED
@@ -78,13 +77,8 @@ public class Main extends Application {
         Ghost orange = new Ghost();
 
         pane.getChildren().add(player.pacman); //PACMAN
-        pane.getChildren().addAll(
-                red.GhostRed,
-                blue.GhostBlue,
-                pink.GhostPink,
-                orange.GhostOrange);
-        pane.getChildren().add(scoreinfo);
-
+        pane.getChildren().addAll(red.GhostRed, blue.GhostBlue, pink.GhostPink, orange.GhostOrange);        //ENEMIES
+        pane.getChildren().add(scoreinfo);  //SCORE
 
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");
