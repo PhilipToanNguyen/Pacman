@@ -2,6 +2,7 @@ package com.example.oblig;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import static com.example.oblig.PacMan.alive;
 
@@ -31,11 +32,11 @@ public class Ghost {
         //ORANGE
         GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
-        // movement(GhostOrange);
+        //movement(GhostOrange);
 
     }
 
-    private Rectangle movement(Rectangle monster) throws InterruptedException {
+    private Shape movement(Rectangle monster) throws InterruptedException {
 
         while (alive) {
 

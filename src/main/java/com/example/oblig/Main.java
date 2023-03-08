@@ -1,5 +1,6 @@
 package com.example.oblig;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -29,6 +30,7 @@ import static javafx.scene.paint.Color.BLACK;
 
 
 public class Main extends Application {
+
     public static Scene scene;
     public static Pane pane;
 
@@ -45,11 +47,14 @@ public class Main extends Application {
     public final int screenWidth = 840;
     public final int screenHeight = 900;
 
+
+
+
     public void start(Stage primaryStage) throws IOException, InterruptedException {
         pane = new Pane();
         scene = new Scene(pane, screenWidth, screenHeight);
         pane.setStyle("-fx-background-color : black");
-        pane.setPrefSize(screenWidth,screenHeight);
+        pane.setPrefSize(screenWidth, screenHeight);
         currentScoreLabel = new Label("Current Score: " + Integer.toString(currentScore));
         currentScoreLabel.setPrefWidth(150);
         currentScoreLabel.setFont(Font.font("Comic Sans MS", 18));
@@ -59,11 +64,11 @@ public class Main extends Application {
 
         //SCOREINFO
         VBox scoreinfo = new VBox(0, currentScoreLabel, highScoreLabel);
-        scoreinfo.setPadding(new Insets(screenHeight/2,screenHeight/2,30*10,30*11));
+        scoreinfo.setPadding(new Insets(screenHeight / 2, screenHeight / 2, 30 * 10, 30 * 11));
         highScoreLabel.setStyle("-fx-text-fill: Green;");
         currentScoreLabel.setStyle("-fx-text-fill: Red;");
 
-        //Map
+        //Legg til Map
         Map kart = new Map();
         //PLAYER
         PacMan player = new PacMan();
@@ -76,19 +81,32 @@ public class Main extends Application {
         //ORANGE
         Ghost orange = new Ghost();
 
+        AnimationTimer collisionTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                kart.checkCollision(player.pacman);
+            }
+
+        };
+        collisionTimer.start();
+
+        //Legg til
         pane.getChildren().add(player.pacman); //PACMAN
         pane.getChildren().addAll(red.GhostRed, blue.GhostBlue, pink.GhostPink, orange.GhostOrange);        //ENEMIES
         pane.getChildren().add(scoreinfo);  //SCORE
+
 
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");
 
         primaryStage.setScene(scene);
         primaryStage.show();
-
-////////////////////////////////////////
+        //////////////////
 
     }
 
+    public static void main(String[] args) {
+        launch();
+    }
 
 }

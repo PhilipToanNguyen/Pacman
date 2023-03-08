@@ -36,3 +36,32 @@
             No dead-ends.
             Only I, L, T, or + wall shapes are allowed, including the occasional rectangular wall.
             Any non-rectangular wall pieces must only be 2 tiles thick.
+
+
+
+
+            AnimationTimer animationTimer = new AnimationTimer() {
+                                    @Override
+                                    public void handle(long timestamp) {
+                                        if (karakter.pacman.getBoundsInParent().intersects(vegg.getBoundsInParent())) {
+                                            System.out.println("kræsj");
+
+                                            if (karakter.pacman.getTranslateX() < vegg.getTranslateX()) {
+                                                karakter.pacman.setTranslateX(karakter.pacman.getTranslateX() - 5);
+                                                System.out.println("Kræsj");
+                                            }
+                                            if (karakter.pacman.getTranslateX() > vegg.getTranslateX()) {
+                                                karakter.pacman.setTranslateX(karakter.pacman.getTranslateX() + 5);
+                                                System.out.println("Kræsj");
+                                            }
+                                            if (karakter.pacman.getTranslateY() < vegg.getTranslateY()) {
+                                                karakter.pacman.setTranslateY(karakter.pacman.getTranslateY() - 5);
+                                                System.out.println("Kræsj");
+                                            }
+                                            if (karakter.pacman.getTranslateY() > vegg.getTranslateY()) {
+                                                karakter.pacman.setTranslateY(karakter.pacman.getTranslateY() + 5);
+                                                System.out.println("Kræsj");
+                                            }
+                                        }
+                                    }
+                                };

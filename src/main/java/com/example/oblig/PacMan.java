@@ -5,6 +5,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -24,39 +25,72 @@ public class PacMan {
 
     public PacMan() {
         this.pacman = pacman;
+        pacMan();
+    }
+
+    public void pacMan() {
         pacman = new Circle(30*14,15*45,12);
         pacman.setFill(Color.YELLOW);
+        controller();
+    }
 
+    public void controller() {
+        Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                TranslateTransition translate = new TranslateTransition(Duration.millis(50), pacman);
+
+                if (event.getCode() == KeyCode.RIGHT) {
+                    translate.setByX(+6);
+                    translate.play();
+                    System.out.println(pacman.getTranslateX());
+                } else if (event.getCode() == KeyCode.LEFT) {
+                    translate.setByX(-6);
+                    translate.play();
+                    System.out.println(pacman.getTranslateX());
+                } else if (event.getCode() == KeyCode.DOWN) {
+                    translate.setByY(+6);
+                    translate.play();
+                    System.out.println(pacman.getTranslateY());
+                } else if (event.getCode() == KeyCode.UP) {
+                    translate.setByY(-6);
+                    translate.play();
+                    System.out.println(pacman.getTranslateY());
+                }
+            }
+
+
+        });
+    }
+    /*public void controller() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){
 
                 if (event.getCode() == KeyCode.RIGHT) {
-                    TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
-                    translate.setByX(6);
-                    translate.play();
+                    pacman.setLayoutX(pacman.getLayoutX() + 6.0);
+                    System.out.println(pacman.getTranslateX());
                 }
                 else if (event.getCode() == KeyCode.LEFT) {
-                    TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
-                    translate.setByX(-6);
-                    translate.play();
+                    pacman.setLayoutX(pacman.getLayoutX() - 6.0);
+                    System.out.println(pacman.getTranslateX());
                 }
                 else if (event.getCode() == KeyCode.DOWN) {
-                    TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
-                    translate.setByY(6);
-                    translate.play();
+                    pacman.setLayoutY(pacman.getLayoutY() + 6.0);
+                    System.out.println(pacman.getTranslateY());
                 }
                 else if (event.getCode() == KeyCode.UP) {
-                    TranslateTransition translate = new TranslateTransition(Duration.millis(50),pacman);
-                    translate.setByY(-6);
-                    translate.play();
+                    pacman.setLayoutY(pacman.getLayoutY() - 6.0);
+                    System.out.println(pacman.getTranslateY());
                 }
             }
 
+
         });
 
+     */
     }
-    }
+
 
 
 
