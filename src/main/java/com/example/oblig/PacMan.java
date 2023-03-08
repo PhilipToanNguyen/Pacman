@@ -38,30 +38,31 @@ public class PacMan {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                TranslateTransition translate = new TranslateTransition(Duration.millis(50), pacman);
+                TranslateTransition translate = new TranslateTransition(Duration.millis(30), pacman);
 
-                if (event.getCode() == KeyCode.RIGHT) {
-                    translate.setByX(+6);
+                if (event.getCode() == KeyCode.D) {
+                    translate.setByX(+3);
                     translate.play();
-                    System.out.println(pacman.getTranslateX());
-                } else if (event.getCode() == KeyCode.LEFT) {
-                    translate.setByX(-6);
+                    //System.out.println(pacman.getTranslateX());
+                } else if (event.getCode() == KeyCode.A) {
+                    translate.setByX(-3);
                     translate.play();
-                    System.out.println(pacman.getTranslateX());
-                } else if (event.getCode() == KeyCode.DOWN) {
-                    translate.setByY(+6);
+                    //System.out.println(pacman.getTranslateX());
+                } else if (event.getCode() == KeyCode.S) {
+                    translate.setByY(+3);
                     translate.play();
-                    System.out.println(pacman.getTranslateY());
-                } else if (event.getCode() == KeyCode.UP) {
-                    translate.setByY(-6);
+                    // System.out.println(pacman.getTranslateY());
+                } else if (event.getCode() == KeyCode.W) {
+                    translate.setByY(-3);
                     translate.play();
-                    System.out.println(pacman.getTranslateY());
+                    //System.out.println(pacman.getTranslateY());
                 }
             }
 
 
         });
     }
+
     /*public void controller() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override

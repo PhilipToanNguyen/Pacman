@@ -36,31 +36,40 @@ public class Main extends Application {
 
     //Score info
     Label currentScoreLabel;
-    Label highScoreLabel;
-    public int highScore;
     public int currentScore;
+
     // SOUND
     Sound music = new Sound();
     Sound se = new Sound();
 
     //SCREEN SETTINGS
-    public final int screenWidth = 840;
-    public final int screenHeight = 900;
+    public static final int screenWidth = 840;
+    public static final int screenHeight = 900;
 
 
 
 
     public void start(Stage primaryStage) throws IOException, InterruptedException {
 
-
         pane = new Pane();
         scene = new Scene(pane, screenWidth, screenHeight);
+
+        //Score
+        currentScoreLabel = new Label("Current Score: " + Integer.toString(currentScore));
+        currentScoreLabel.setPrefWidth(150);
+        currentScoreLabel.setFont(Font.font("Comic Sans MS", 18));
+        currentScoreLabel.setStyle("-fx-text-fill: Yellow;");
+        VBox score = new VBox(currentScoreLabel);
+        score.setLayoutX(screenWidth/2 - 70);
+        score.setLayoutY(screenHeight/2);
+
         //Legg til Map
         Map kart = new Map();
         //PLAYER
         PacMan player = new PacMan();
         //GHOST
         Ghost ghost = new Ghost();
+
 
         AnimationTimer collisionTimer = new AnimationTimer() {
             @Override
@@ -76,25 +85,16 @@ public class Main extends Application {
         collisionTimer.start();
         pane.setStyle("-fx-background-color : black");
         pane.setPrefSize(screenWidth, screenHeight);
-        currentScoreLabel = new Label("Current Score: " + Integer.toString(currentScore));
-        currentScoreLabel.setPrefWidth(150);
-        currentScoreLabel.setFont(Font.font("Comic Sans MS", 18));
-        highScoreLabel = new Label("High Score: " + Integer.toString(highScore));
-        highScoreLabel.setFont(Font.font("Comic Sans MS", 18));
-        highScoreLabel.setPrefWidth(150);
 
-        //SCOREINFO
-        VBox scoreinfo = new VBox(0, currentScoreLabel, highScoreLabel);
-        scoreinfo.setPadding(new Insets(screenHeight / 2, screenHeight / 2, 30 * 10, 30 * 11));
-        highScoreLabel.setStyle("-fx-text-fill: Green;");
-        currentScoreLabel.setStyle("-fx-text-fill: Red;");
+
 
 
 
         //Legg til
         pane.getChildren().add(player.pacman); //PACMAN
         pane.getChildren().addAll(ghost.GhostRed, ghost.GhostBlue, ghost.GhostPink, ghost.GhostOrange);        //ENEMIES
-        pane.getChildren().add(scoreinfo);  //SCORE
+        pane.getChildren().add(score);  //SCORE
+
 
 
         primaryStage.setResizable(false);
