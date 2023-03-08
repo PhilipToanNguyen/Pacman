@@ -51,8 +51,29 @@ public class Main extends Application {
 
 
     public void start(Stage primaryStage) throws IOException, InterruptedException {
+
+
         pane = new Pane();
         scene = new Scene(pane, screenWidth, screenHeight);
+        //Legg til Map
+        Map kart = new Map();
+        //PLAYER
+        PacMan player = new PacMan();
+        //GHOST
+        Ghost ghost = new Ghost();
+
+        AnimationTimer collisionTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                player.controller();
+                kart.matForPacMan(player.pacman);
+                kart.checkCollision(player.pacman);
+
+
+            }
+
+        };
+        collisionTimer.start();
         pane.setStyle("-fx-background-color : black");
         pane.setPrefSize(screenWidth, screenHeight);
         currentScoreLabel = new Label("Current Score: " + Integer.toString(currentScore));
@@ -68,31 +89,11 @@ public class Main extends Application {
         highScoreLabel.setStyle("-fx-text-fill: Green;");
         currentScoreLabel.setStyle("-fx-text-fill: Red;");
 
-        //Legg til Map
-        Map kart = new Map();
-        //PLAYER
-        PacMan player = new PacMan();
-        //RED
-        Ghost red = new Ghost();
-        //BLUE
-        Ghost blue = new Ghost();
-        //PINK
-        Ghost pink = new Ghost();
-        //ORANGE
-        Ghost orange = new Ghost();
 
-        AnimationTimer collisionTimer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                kart.checkCollision(player.pacman);
-            }
-
-        };
-        collisionTimer.start();
 
         //Legg til
         pane.getChildren().add(player.pacman); //PACMAN
-        pane.getChildren().addAll(red.GhostRed, blue.GhostBlue, pink.GhostPink, orange.GhostOrange);        //ENEMIES
+        pane.getChildren().addAll(ghost.GhostRed, ghost.GhostBlue, ghost.GhostPink, ghost.GhostOrange);        //ENEMIES
         pane.getChildren().add(scoreinfo);  //SCORE
 
 

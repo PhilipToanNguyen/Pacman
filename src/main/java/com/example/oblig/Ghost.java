@@ -1,8 +1,11 @@
 package com.example.oblig;
 
+import javafx.animation.TranslateTransition;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 
 import static com.example.oblig.PacMan.alive;
 
@@ -36,31 +39,35 @@ public class Ghost {
 
     }
 
-    private Shape movement(Rectangle monster) throws InterruptedException {
+     public Node movement(Node monster) throws InterruptedException {
+        TranslateTransition translate = new TranslateTransition(Duration.millis(50), monster);
 
         while (alive) {
-
             Thread.sleep(500);
             int i = (int) (Math.random() * 4 + 1);
 
             if (i == 1) {
-                monster.setLayoutX(monster.getLayoutY() + 6.0);
+                translate.setByX(+6);
+                translate.play();
                 System.out.println("Right");
             } else if (i == 2) {
-                monster.setLayoutX(monster.getLayoutX() - 6.0);
+                translate.setByX(-6);
+                translate.play();
                 System.out.println("Left");
             } else if (i == 3) {
-                monster.setLayoutY(monster.getLayoutY() + 6.0);
+                translate.setByY(+6);
+                translate.play();
                 System.out.println("Down");
             } else if (i == 4) {
-                monster.setLayoutY(monster.getLayoutY() - 6.0);
+                translate.setByY(-6);
+                translate.play();
+                //monster.setLayoutY(monster.getLayoutY() - 6.0);
                 System.out.println("Up");
             } else {
                 alive = false;
             }
         }
         return monster;
-
     }
 }
 
