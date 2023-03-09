@@ -26,13 +26,16 @@ public class PacMan {
     public PacMan() {
         this.pacman = pacman;
         pacMan();
+
+
     }
 
     public void pacMan() {
-        pacman = new Circle(30*14,15*45,12);
+        pacman = new Circle(30 * 14, 15 * 45, 12);
         pacman.setFill(Color.YELLOW);
         controller();
     }
+
 
     public void controller() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -59,9 +62,10 @@ public class PacMan {
                 }
             }
 
-
         });
+
     }
+}
 
     /*public void controller() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
@@ -90,7 +94,8 @@ public class PacMan {
         });
 
      */
-    }
+
+
 
 
 

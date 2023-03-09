@@ -1,11 +1,12 @@
 package com.example.oblig;
 
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+import javafx.scene.shape.*;
 import javafx.util.Duration;
+
+import java.util.Random;
 
 import static com.example.oblig.PacMan.alive;
 
@@ -35,21 +36,22 @@ public class Ghost {
         //ORANGE
         GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
-        //movement(GhostOrange);
+        movement(GhostOrange);
 
     }
-
-     public Node movement(Node monster) throws InterruptedException {
-        TranslateTransition translate = new TranslateTransition(Duration.millis(50), monster);
+    /*
+     public Rectangle movement(Node monster) throws InterruptedException {
+        TranslateTransition translate = new TranslateTransition(Duration.millis(30), monster);
 
         while (alive) {
             Thread.sleep(500);
             int i = (int) (Math.random() * 4 + 1);
 
             if (i == 1) {
-                translate.setByX(+6);
+                translate.setByX(6);
                 translate.play();
                 System.out.println("Right");
+
             } else if (i == 2) {
                 translate.setByX(-6);
                 translate.play();
@@ -61,15 +63,46 @@ public class Ghost {
             } else if (i == 4) {
                 translate.setByY(-6);
                 translate.play();
-                //monster.setLayoutY(monster.getLayoutY() - 6.0);
                 System.out.println("Up");
             } else {
                 alive = false;
             }
         }
-        return monster;
+        return (Rectangle) monster;
     }
-}
+      */
+
+    public void movement(Rectangle monster) {
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        int randomMovement = (int) (Math.random() * 4);
+
+        if (randomMovement == 0) {
+               final KeyValue opp = new KeyValue(monster.translateXProperty(), +6);
+               final KeyFrame up = new KeyFrame(Duration.millis(200), opp);
+               timeline.getKeyFrames().add(up);
+               timeline.play();
+           } else if (randomMovement == 1) {
+               final KeyValue ned = new KeyValue(monster.translateYProperty(), -6);
+               final KeyFrame down = new KeyFrame(Duration.millis(200), ned);
+               timeline.getKeyFrames().add(down);
+               timeline.play();
+           } else if (randomMovement == 2) {
+               final KeyValue venstre = new KeyValue(monster.translateXProperty(), -6);
+               final KeyFrame left = new KeyFrame(Duration.millis(200), venstre);
+               timeline.getKeyFrames().add(left);
+               timeline.play();
+           } else if (randomMovement == 3) {
+               final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +6);
+               final KeyFrame right = new KeyFrame(Duration.millis(200), hoyre);
+               timeline.getKeyFrames().add(right);
+
+               timeline.play();
+           }
+       }
+    }
+
+
 
 
 

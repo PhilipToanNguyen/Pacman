@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -36,7 +37,7 @@ public class Main extends Application {
 
     //Score info
     Label currentScoreLabel;
-    public int currentScore;
+    public static int currentScore;
 
     // SOUND
     Sound music = new Sound();
@@ -50,27 +51,20 @@ public class Main extends Application {
 
 
     public void start(Stage primaryStage) throws IOException, InterruptedException {
-
         pane = new Pane();
         scene = new Scene(pane, screenWidth, screenHeight);
 
-        //Score
-        currentScoreLabel = new Label("Current Score: " + Integer.toString(currentScore));
-        currentScoreLabel.setPrefWidth(150);
-        currentScoreLabel.setFont(Font.font("Comic Sans MS", 18));
-        currentScoreLabel.setStyle("-fx-text-fill: Yellow;");
-        VBox score = new VBox(currentScoreLabel);
-        score.setLayoutX(screenWidth/2 - 70);
-        score.setLayoutY(screenHeight/2);
-
         //Legg til Map
         Map kart = new Map();
-        //PLAYER
-        PacMan player = new PacMan();
+
         //GHOST
         Ghost ghost = new Ghost();
+        Blue blue = new Blue();
 
+        //PLAYER
+        PacMan player = new PacMan();
 
+        //Animation // FPS
         AnimationTimer collisionTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -78,25 +72,29 @@ public class Main extends Application {
                 kart.matForPacMan(player.pacman);
                 kart.checkCollision(player.pacman);
 
-
             }
 
         };
-        collisionTimer.start();
         pane.setStyle("-fx-background-color : black");
         pane.setPrefSize(screenWidth, screenHeight);
 
 
-
-
+        //Score
+        currentScoreLabel = new Label("Score: " + Integer.toString(currentScore));
+        currentScoreLabel.setPrefWidth(150);
+        currentScoreLabel.setFont(Font.font("Comic Sans MS", 18));
+        currentScoreLabel.setStyle("-fx-text-fill: Yellow;");
+        VBox score = new VBox(currentScoreLabel);
+        score.setLayoutX(screenWidth/2 - 30);
+        score.setLayoutY(screenHeight/2);
 
         //Legg til
         pane.getChildren().add(player.pacman); //PACMAN
-        pane.getChildren().addAll(ghost.GhostRed, ghost.GhostBlue, ghost.GhostPink, ghost.GhostOrange);        //ENEMIES
+        pane.getChildren().addAll(ghost.GhostRed, ghost.GhostPink, ghost.GhostOrange, ghost.GhostBlue);        //ENEMIES
         pane.getChildren().add(score);  //SCORE
 
 
-
+        collisionTimer.start();
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");
 
