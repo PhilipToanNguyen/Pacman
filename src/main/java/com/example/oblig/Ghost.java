@@ -78,23 +78,23 @@ public class Ghost {
         int randomMovement = (int) (Math.random() * 4);
 
         if (randomMovement == 0) {
-               final KeyValue opp = new KeyValue(monster.translateXProperty(), +6);
-               final KeyFrame up = new KeyFrame(Duration.millis(200), opp);
+               final KeyValue opp = new KeyValue(monster.translateXProperty(), +30);
+               final KeyFrame up = new KeyFrame(Duration.millis(1000), opp);
                timeline.getKeyFrames().add(up);
                timeline.play();
            } else if (randomMovement == 1) {
-               final KeyValue ned = new KeyValue(monster.translateYProperty(), -6);
-               final KeyFrame down = new KeyFrame(Duration.millis(200), ned);
+               final KeyValue ned = new KeyValue(monster.translateYProperty(), -30);
+               final KeyFrame down = new KeyFrame(Duration.millis(1000), ned);
                timeline.getKeyFrames().add(down);
                timeline.play();
            } else if (randomMovement == 2) {
-               final KeyValue venstre = new KeyValue(monster.translateXProperty(), -6);
-               final KeyFrame left = new KeyFrame(Duration.millis(200), venstre);
+               final KeyValue venstre = new KeyValue(monster.translateXProperty(), -30);
+               final KeyFrame left = new KeyFrame(Duration.millis(1000), venstre);
                timeline.getKeyFrames().add(left);
                timeline.play();
            } else if (randomMovement == 3) {
-               final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +6);
-               final KeyFrame right = new KeyFrame(Duration.millis(200), hoyre);
+               final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
+               final KeyFrame right = new KeyFrame(Duration.millis(1000), hoyre);
                timeline.getKeyFrames().add(right);
 
                timeline.play();
