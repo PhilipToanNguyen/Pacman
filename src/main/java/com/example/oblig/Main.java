@@ -59,18 +59,26 @@ public class Main extends Application {
 
         //GHOST
         Ghost ghost = new Ghost();
-        Blue blue = new Blue();
 
         //PLAYER
         PacMan player = new PacMan();
 
         //Animation // FPS
-        AnimationTimer collisionTimer = new AnimationTimer() {
+        AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                player.controller();
                 kart.matForPacMan(player.pacman);
                 kart.checkCollision(player.pacman);
+                kart.checkCollision(ghost.GhostOrange);
+                kart.checkCollision(ghost.GhostBlue);
+                kart.checkCollision(ghost.GhostRed);
+                kart.checkCollision(ghost.GhostPink);
+                player.controller();
+                ghost.movementOrange(ghost.GhostOrange);
+                ghost.movementOrange(ghost.GhostPink);
+                ghost.movementOrange(ghost.GhostRed);
+                ghost.movementOrange(ghost.GhostBlue);
+
 
             }
 
@@ -94,7 +102,7 @@ public class Main extends Application {
         pane.getChildren().add(score);  //SCORE
 
 
-        collisionTimer.start();
+        animationTimer.start();
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");
 

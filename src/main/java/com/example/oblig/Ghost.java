@@ -1,7 +1,10 @@
 package com.example.oblig;
 
 import javafx.animation.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
@@ -36,71 +39,47 @@ public class Ghost {
         //ORANGE
         GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
-        movement(GhostOrange);
+        movementOrange(GhostOrange);
 
     }
-    /*
-     public Rectangle movement(Node monster) throws InterruptedException {
-        TranslateTransition translate = new TranslateTransition(Duration.millis(30), monster);
 
-        while (alive) {
-            Thread.sleep(500);
-            int i = (int) (Math.random() * 4 + 1);
+public void movementOrange(Node monster) {
+            Timeline timeline = new Timeline();
+            int randomMovement = (int) (Math.random() * 4);
 
-            if (i == 1) {
-                translate.setByX(6);
-                translate.play();
-                System.out.println("Right");
+            if (randomMovement == 0) {
+                final KeyValue opp = new KeyValue(monster.translateYProperty(), -30);
+                final KeyFrame up = new KeyFrame(Duration.millis(500), opp);
+                timeline.getKeyFrames().add(up);
+                timeline.play();
 
-            } else if (i == 2) {
-                translate.setByX(-6);
-                translate.play();
-                System.out.println("Left");
-            } else if (i == 3) {
-                translate.setByY(+6);
-                translate.play();
-                System.out.println("Down");
-            } else if (i == 4) {
-                translate.setByY(-6);
-                translate.play();
-                System.out.println("Up");
-            } else {
-                alive = false;
+            } else if (randomMovement == 1) {
+                final KeyValue ned = new KeyValue(monster.translateYProperty(), +30);
+                final KeyFrame down = new KeyFrame(Duration.millis(500), ned);
+                timeline.getKeyFrames().add(down);
+                timeline.play();
+
+            } else if (randomMovement == 2) {
+                final KeyValue venstre = new KeyValue(monster.translateXProperty(), -30);
+                final KeyFrame left = new KeyFrame(Duration.millis(500), venstre);
+                timeline.getKeyFrames().add(left);
+                timeline.play();
             }
+                else if (randomMovement == 3) {
+                final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
+                final KeyFrame right = new KeyFrame(Duration.millis(500), hoyre);
+                timeline.getKeyFrames().add(right);
+                timeline.play();
+
+                }
+            }
+
         }
-        return (Rectangle) monster;
-    }
-      */
 
-    public void movement(Rectangle monster) {
-        Timeline timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        int randomMovement = (int) (Math.random() * 4);
 
-        if (randomMovement == 0) {
-               final KeyValue opp = new KeyValue(monster.translateXProperty(), +30);
-               final KeyFrame up = new KeyFrame(Duration.millis(1000), opp);
-               timeline.getKeyFrames().add(up);
-               timeline.play();
-           } else if (randomMovement == 1) {
-               final KeyValue ned = new KeyValue(monster.translateYProperty(), -30);
-               final KeyFrame down = new KeyFrame(Duration.millis(1000), ned);
-               timeline.getKeyFrames().add(down);
-               timeline.play();
-           } else if (randomMovement == 2) {
-               final KeyValue venstre = new KeyValue(monster.translateXProperty(), -30);
-               final KeyFrame left = new KeyFrame(Duration.millis(1000), venstre);
-               timeline.getKeyFrames().add(left);
-               timeline.play();
-           } else if (randomMovement == 3) {
-               final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
-               final KeyFrame right = new KeyFrame(Duration.millis(1000), hoyre);
-               timeline.getKeyFrames().add(right);
 
-               timeline.play();
-           }
-       }
-    }
+
+
 
 
 

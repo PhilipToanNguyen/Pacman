@@ -26,8 +26,6 @@ public class PacMan {
     public PacMan() {
         this.pacman = pacman;
         pacMan();
-
-
     }
 
     public void pacMan() {
