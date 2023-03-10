@@ -27,22 +27,19 @@ public class Ghost {
         //RED
         GhostRed = new Rectangle(30 * 14, 30 * 13, 30, 30);
         GhostRed.setFill(Color.RED);
-        // movement(GhostRed);
         //BLUE
         GhostBlue = new Rectangle(30 * 15, 30 * 13, 30, 30);
         GhostBlue.setFill(Color.CYAN);
-        // movement(GhostBlue);
+
         //PINK
         GhostPink = new Rectangle(30 * 12, 30 * 13, 30, 30);
         GhostPink.setFill(Color.PINK);
-        //movement(GhostPink);
+
         //ORANGE
         GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
-        movementOrange(GhostOrange);
 
     }
-
 public void movementOrange(Node monster) {
             Timeline timeline = new Timeline();
             int randomMovement = (int) (Math.random() * 4);

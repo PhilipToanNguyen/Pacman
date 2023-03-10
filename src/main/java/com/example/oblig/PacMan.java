@@ -34,7 +34,6 @@ public class PacMan {
         controller();
     }
 
-
     public void controller() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
