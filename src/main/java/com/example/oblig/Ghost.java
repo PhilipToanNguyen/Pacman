@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
@@ -40,36 +42,42 @@ public class Ghost {
         GhostOrange.setFill(Color.ORANGE);
 
     }
-public void movementOrange(Node monster) {
+    public void move(Node monster) {
+
+    }
+
+
+public void movement(Node monster) {
             Timeline timeline = new Timeline();
             int randomMovement = (int) (Math.random() * 4);
 
             if (randomMovement == 0) {
                 final KeyValue opp = new KeyValue(monster.translateYProperty(), -30);
-                final KeyFrame up = new KeyFrame(Duration.millis(500), opp);
+                final KeyFrame up = new KeyFrame(Duration.millis(1000), opp);
                 timeline.getKeyFrames().add(up);
-                timeline.play();
+
 
             } else if (randomMovement == 1) {
                 final KeyValue ned = new KeyValue(monster.translateYProperty(), +30);
-                final KeyFrame down = new KeyFrame(Duration.millis(500), ned);
+                final KeyFrame down = new KeyFrame(Duration.millis(1000), ned);
                 timeline.getKeyFrames().add(down);
-                timeline.play();
+
 
             } else if (randomMovement == 2) {
                 final KeyValue venstre = new KeyValue(monster.translateXProperty(), -30);
-                final KeyFrame left = new KeyFrame(Duration.millis(500), venstre);
+                final KeyFrame left = new KeyFrame(Duration.millis(1000), venstre);
                 timeline.getKeyFrames().add(left);
-                timeline.play();
+
             }
                 else if (randomMovement == 3) {
                 final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
-                final KeyFrame right = new KeyFrame(Duration.millis(500), hoyre);
+                final KeyFrame right = new KeyFrame(Duration.millis(1000), hoyre);
                 timeline.getKeyFrames().add(right);
-                timeline.play();
 
-                }
+                }timeline.play();
+
             }
+
 
         }
 

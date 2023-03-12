@@ -20,12 +20,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 
 import static javafx.scene.paint.Color.BLACK;
 
@@ -36,8 +38,8 @@ public class Main extends Application {
     public static Pane pane;
 
     //Score info
-    Label currentScoreLabel;
-    public static int currentScore;
+   public static Text currentScoreText;
+   public static int currentScore = 0;
 
     // SOUND
     Sound music = new Sound();
@@ -63,21 +65,32 @@ public class Main extends Application {
         //PLAYER
         PacMan player = new PacMan();
 
+        //SCORE
+        currentScoreText = new Text("Score: " + currentScore);
+        currentScoreText.setFont(Font.font("Comic Sans MS", 18));
+        currentScoreText.setStyle("-fx-text-fill: Yellow;");
+        VBox score = new VBox(currentScoreText);
+        score.setLayoutX(screenWidth/2 - 30);
+        score.setLayoutY(screenHeight/2);
+
         //Animation // FPS
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                kart.matForPacMan(player.pacman);
+
                 kart.checkCollision(player.pacman);
                 kart.checkCollision(ghost.GhostOrange);
                 kart.checkCollision(ghost.GhostBlue);
                 kart.checkCollision(ghost.GhostRed);
                 kart.checkCollision(ghost.GhostPink);
+                kart.matForPacMan(player.pacman);
                 player.controller();
-                ghost.movementOrange(ghost.GhostOrange);
-                ghost.movementOrange(ghost.GhostPink);
-                ghost.movementOrange(ghost.GhostRed);
-                ghost.movementOrange(ghost.GhostBlue);
+
+
+                ghost.movement(ghost.GhostOrange);
+               // ghost.movement(ghost.GhostPink);
+               // ghost.movement(ghost.GhostRed);
+                //ghost.movement(ghost.GhostBlue);
 
 
             }
@@ -87,19 +100,11 @@ public class Main extends Application {
         pane.setPrefSize(screenWidth, screenHeight);
 
 
-        //Score
-        currentScoreLabel = new Label("Score: " + Integer.toString(currentScore));
-        currentScoreLabel.setPrefWidth(150);
-        currentScoreLabel.setFont(Font.font("Comic Sans MS", 18));
-        currentScoreLabel.setStyle("-fx-text-fill: Yellow;");
-        VBox score = new VBox(currentScoreLabel);
-        score.setLayoutX(screenWidth/2 - 30);
-        score.setLayoutY(screenHeight/2);
 
         //Legg til
         pane.getChildren().add(player.pacman); //PACMAN
         pane.getChildren().addAll(ghost.GhostRed, ghost.GhostPink, ghost.GhostOrange, ghost.GhostBlue);        //ENEMIES
-        pane.getChildren().add(score);  //SCORE
+
 
 
         animationTimer.start();
