@@ -40,6 +40,7 @@ public class Main extends Application {
     //Score info
    public static Text currentScoreText;
    public static int currentScore = 0;
+   public static int  life = 3;
 
     // SOUND
     Sound music = new Sound();
@@ -50,19 +51,18 @@ public class Main extends Application {
     public static final int screenHeight = 900;
 
 
-
-
     public void start(Stage primaryStage) throws IOException, InterruptedException {
+        //Oppretter
         pane = new Pane();
         scene = new Scene(pane, screenWidth, screenHeight);
 
         //Legg til Map
         Map kart = new Map();
 
-        //GHOST
+        //Kaller GHOST
         Ghost ghost = new Ghost();
 
-        //PLAYER
+        //Kaller PLAYER
         PacMan player = new PacMan();
 
         //SCORE
@@ -77,37 +77,40 @@ public class Main extends Application {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+                //GAMEOVER // KOLLISJON mellom spiller og ghost
                 kart.playerCollideGhost(player.pacman, ghost.GhostOrange);
+                kart.playerCollideGhost(player.pacman, ghost.GhostPink);
+                kart.playerCollideGhost(player.pacman, ghost.GhostRed);
+                kart.playerCollideGhost(player.pacman, ghost.GhostBlue);
+
+                //COLLISION og BEVEGELSE I DET DE KOLLIDERER
                 kart.checkCollision(player.pacman);
                 kart.checkCollisionGhost(ghost.GhostOrange);
                 kart.checkCollisionGhost(ghost.GhostBlue);
                 kart.checkCollisionGhost(ghost.GhostRed);
                 kart.checkCollisionGhost(ghost.GhostPink);
+                //MAT
                 kart.matForPacMan(player.pacman);
+                // BEVEGELSE
                 player.controller();
-
-
+                // START BEVEGELSE SLIK AT DE GÅR UT AV BOKSEN
                 ghost.move(ghost.GhostOrange);
-                //ghost.movement(ghost.GhostPink);
-                //ghost.movement(ghost.GhostRed);
-                //ghost.movement(ghost.GhostBlue);
-
+                ghost.move(ghost.GhostPink);
+                ghost.move(ghost.GhostRed);
+                ghost.move(ghost.GhostBlue);
 
             }
 
         };
+        animationTimer.start();
+
         pane.setStyle("-fx-background-color : black");
         pane.setPrefSize(screenWidth, screenHeight);
 
-
-
         //Legg til
         pane.getChildren().add(player.pacman); //PACMAN
-        pane.getChildren().addAll(ghost.GhostRed, ghost.GhostPink, ghost.GhostOrange, ghost.GhostBlue);        //ENEMIES
+        pane.getChildren().addAll(ghost.GhostRed, ghost.GhostPink, ghost.GhostOrange, ghost.GhostBlue);  //ENEMIES
 
-
-
-        animationTimer.start();
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");
 

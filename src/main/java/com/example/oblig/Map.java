@@ -24,11 +24,11 @@ public class Map {
     int count = 0;
 
     public static Rectangle vegg;
-    public static Circle pellets;
     public static ArrayList<Node> food = new ArrayList<Node>();
     public static ArrayList<Node> wall = new ArrayList<Node>();
-    Timeline timeline = new Timeline();
 
+
+    //Hvordan mappen ser ut
     int[][] map = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -69,7 +69,7 @@ public class Map {
 
 
     }
-
+    //Metode for å laste opp Map. Denne metoden kalles under konstruktøren.
     public void loadMap() {
         //For-looper, plassering av vegg, vei og mat
         for (int i = 0; i < map.length; i++) {
@@ -104,6 +104,8 @@ public class Map {
             }
         }
     }
+
+    //Metode for kollisjon mellom spiller og vegg. Ment for at spilleren ikke skal gå igjennom veggen
     public void checkCollision(Node p) {
         for (Node vegg : wall) {
             if (p.getBoundsInParent().intersects(vegg.getBoundsInParent())) {
@@ -132,9 +134,12 @@ public class Map {
             }
         }
     }
+
+    // Metode, Mat eller pellets for Pacman.
+    // "Pacman spiser opp maten". og poeng telles opp.
     public void matForPacMan(Node p) {
         try {
-        for (Node pellets : food) {
+            for (Node pellets : food) {
                 if (p.getBoundsInParent().intersects(pellets.getBoundsInParent())) {
                     food.remove(pellets);
                     pane.getChildren().remove(pellets);
@@ -142,14 +147,19 @@ public class Map {
                     System.out.println("Score: " + currentScore);
 
                 }
-        }}catch (Exception e) {
-
-
             }
+        } catch (Exception e) {
+
+
         }
+    }
+
+    //Metode for veggkollisjon for ghost.
+    // Ved kollisjon er det meningen de skal gå en annen retning som ikke kolliderer
     public void checkCollisionGhost(Node monster) {
         for (Node vegg : wall) {
             Timeline timeline = new Timeline();
+            TranslateTransition translate = new TranslateTransition(Duration.millis(200), monster);
 
             int randomMovement = (int) (Math.random() * 4);
             //MOVEMENTS
@@ -162,44 +172,71 @@ public class Map {
             final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
             final KeyFrame right = new KeyFrame(Duration.millis(300), hoyre);
 
+
             if (monster.getBoundsInParent().intersects(vegg.getBoundsInParent())) {
 
                 //LEFT COLLISION
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() + 0.5);
+                    translate.setByY(-30);
+                    translate.play();
 
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() - 0.5);
-
+                    translate.setByY(30);
+                    translate.play();
 
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() - 0.5);
-
+                    translate.setByX(-30);
+                    translate.play();
 
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() + 0.5);
-                    timeline.getKeyFrames().add(right);
-                    timeline.play();
-
+                    translate.setByX(30);
+                    translate.play();
                 }
 
             }
         }
     }
-    public void playerCollideGhost(Node player, Node monster) {
-        if (player.getBoundsInParent().intersects(monster.getBoundsInParent())) {
-            player.setVisible(false);
 
+    //Metode for kollisjon mellom spiller og ghost, slik at spilleren må unngå ghost.
+    public void playerCollideGhost(Node player, Node monster) {
+        int i = life;
+
+        if (player.getBoundsInParent().intersects(monster.getBoundsInParent())) {
+                life--;
+                player.setTranslateX(0);
+                player.setTranslateY(0);
+            System.out.println(life);
+
+
+                if (life == 0 ) {
+                    Text text = new Text();
+                    text.setText("Gameover");
+                    text.setFont(Font.font ("Verdana", 24));
+                    text.setFill(Color.YELLOW);
+                    VBox loseinfo = new VBox(text);
+                    player.setVisible(false);
+                    loseinfo.setLayoutX(screenWidth/2 - 30);
+                    loseinfo.setLayoutY(screenHeight/2);
+                    pane.getChildren().add(loseinfo);
+                }
+            }
         }
-    }
 
 }
+
+
+
+
 
     /*
 public void matForPacMan(Node p) {

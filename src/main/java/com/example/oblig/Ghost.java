@@ -44,9 +44,8 @@ public class Ghost {
     }
 
     public void move(Node monster) {
-    TranslateTransition translate = new TranslateTransition(Duration.millis(300), monster);
+    TranslateTransition translate = new TranslateTransition(Duration.millis(100), monster);
     translate.setByY(-30);
-
     translate.play();
     }
 /*

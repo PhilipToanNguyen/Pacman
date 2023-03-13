@@ -67,33 +67,8 @@ public class PacMan {
     }
 }
 
-    /*public void controller() {
-        Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
-            @Override
-            public void handle(KeyEvent event){
-
-                if (event.getCode() == KeyCode.RIGHT) {
-                    pacman.setLayoutX(pacman.getLayoutX() + 6.0);
-                    System.out.println(pacman.getTranslateX());
-                }
-                else if (event.getCode() == KeyCode.LEFT) {
-                    pacman.setLayoutX(pacman.getLayoutX() - 6.0);
-                    System.out.println(pacman.getTranslateX());
-                }
-                else if (event.getCode() == KeyCode.DOWN) {
-                    pacman.setLayoutY(pacman.getLayoutY() + 6.0);
-                    System.out.println(pacman.getTranslateY());
-                }
-                else if (event.getCode() == KeyCode.UP) {
-                    pacman.setLayoutY(pacman.getLayoutY() - 6.0);
-                    System.out.println(pacman.getTranslateY());
-                }
-            }
 
 
-        });
-
-     */
 
 
 
