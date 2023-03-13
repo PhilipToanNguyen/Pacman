@@ -77,19 +77,19 @@ public class Main extends Application {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-
+                kart.playerCollideGhost(player.pacman, ghost.GhostOrange);
                 kart.checkCollision(player.pacman);
-                kart.checkCollision(ghost.GhostOrange);
-                kart.checkCollision(ghost.GhostBlue);
-                kart.checkCollision(ghost.GhostRed);
-                kart.checkCollision(ghost.GhostPink);
+                kart.checkCollisionGhost(ghost.GhostOrange);
+                kart.checkCollisionGhost(ghost.GhostBlue);
+                kart.checkCollisionGhost(ghost.GhostRed);
+                kart.checkCollisionGhost(ghost.GhostPink);
                 kart.matForPacMan(player.pacman);
                 player.controller();
 
 
                 ghost.movement(ghost.GhostOrange);
-               // ghost.movement(ghost.GhostPink);
-               // ghost.movement(ghost.GhostRed);
+                //ghost.movement(ghost.GhostPink);
+                //ghost.movement(ghost.GhostRed);
                 //ghost.movement(ghost.GhostBlue);
 
 

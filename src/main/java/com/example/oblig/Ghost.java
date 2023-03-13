@@ -38,19 +38,28 @@ public class Ghost {
         GhostPink.setFill(Color.PINK);
 
         //ORANGE
-        GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
+        GhostOrange = new Rectangle(30 * 13, 30 * 13, 29, 29);
         GhostOrange.setFill(Color.ORANGE);
 
     }
+
     public void move(Node monster) {
 
     }
 
+    public void movement(Node monster) {
+        Timeline timeline = new Timeline();
+        int randomMovement = (int) (Math.random() * 4);
+        if (randomMovement == 0) {
 
-public void movement(Node monster) {
-            Timeline timeline = new Timeline();
-            int randomMovement = (int) (Math.random() * 4);
+            final KeyValue opp = new KeyValue(monster.translateYProperty(), -60);
+            final KeyFrame up = new KeyFrame(Duration.millis(100), opp);
+            timeline.getKeyFrames().add(up);
+            timeline.play();
 
+
+
+            /*
             if (randomMovement == 0) {
                 final KeyValue opp = new KeyValue(monster.translateYProperty(), -30);
                 final KeyFrame up = new KeyFrame(Duration.millis(1000), opp);
@@ -75,11 +84,13 @@ public void movement(Node monster) {
                 timeline.getKeyFrames().add(right);
 
                 }timeline.play();
-
-            }
-
+                */
 
         }
+
+
+    }
+}
 
 
 

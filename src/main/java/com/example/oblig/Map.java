@@ -1,9 +1,6 @@
 package com.example.oblig;
 
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -107,7 +104,6 @@ public class Map {
             }
         }
     }
-
     public void checkCollision(Node p) {
         for (Node vegg : wall) {
             if (p.getBoundsInParent().intersects(vegg.getBoundsInParent())) {
@@ -151,6 +147,61 @@ public class Map {
 
             }
         }
+    public void checkCollisionGhost(Node monster) {
+        for (Node vegg : wall) {
+            Timeline timeline = new Timeline();
+
+            int randomMovement = (int) (Math.random() * 4);
+            //MOVEMENTS
+            final KeyValue opp = new KeyValue(monster.translateYProperty(), -30);
+            final KeyFrame up = new KeyFrame(Duration.millis(300), opp);
+            final KeyValue ned = new KeyValue(monster.translateYProperty(), +30);
+            final KeyFrame down = new KeyFrame(Duration.millis(300), ned);
+            final KeyValue venstre = new KeyValue(monster.translateXProperty(), -30);
+            final KeyFrame left = new KeyFrame(Duration.millis(300), venstre);
+            final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
+            final KeyFrame right = new KeyFrame(Duration.millis(300), hoyre);
+
+            if (monster.getBoundsInParent().intersects(vegg.getBoundsInParent())) {
+
+
+                //LEFT COLLISION
+                if (monster.getTranslateX() < vegg.getTranslateX()) {
+                    monster.setTranslateX(monster.getTranslateX() + 0.1);
+
+                }
+                //RIGHT COLLISION
+                if (monster.getTranslateX() > vegg.getTranslateX()) {
+                    monster.setTranslateX(monster.getTranslateX() - 0.1);
+
+
+                }
+                //DOWN COLLISION
+                if (monster.getTranslateY() > vegg.getTranslateY()) {
+                    monster.setTranslateY(monster.getTranslateY() - 0.1);
+
+
+                }
+                //UP COLLISION
+                if (monster.getTranslateY() < vegg.getTranslateY()) {
+                    monster.setTranslateY(monster.getTranslateY() + 0.1);
+                    timeline.getKeyFrames().add(right);
+                    timeline.play();
+
+
+
+
+                }
+
+            }
+        }
+    }
+    public void playerCollideGhost(Node player, Node monster) {
+        if (player.getBoundsInParent().intersects(monster.getBoundsInParent())) {
+            player.setVisible(false);
+
+        }
+    }
     }
 
     /*
