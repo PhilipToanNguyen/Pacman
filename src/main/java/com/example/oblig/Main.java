@@ -87,7 +87,7 @@ public class Main extends Application {
                 player.controller();
 
 
-                ghost.movement(ghost.GhostOrange);
+                ghost.move(ghost.GhostOrange);
                 //ghost.movement(ghost.GhostPink);
                 //ghost.movement(ghost.GhostRed);
                 //ghost.movement(ghost.GhostBlue);

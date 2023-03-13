@@ -38,15 +38,18 @@ public class Ghost {
         GhostPink.setFill(Color.PINK);
 
         //ORANGE
-        GhostOrange = new Rectangle(30 * 13, 30 * 13, 29, 29);
+        GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
 
     }
 
     public void move(Node monster) {
+    TranslateTransition translate = new TranslateTransition(Duration.millis(300), monster);
+    translate.setByY(-30);
 
+    translate.play();
     }
-
+/*
     public void movement(Node monster) {
         Timeline timeline = new Timeline();
         int randomMovement = (int) (Math.random() * 4);
@@ -84,13 +87,15 @@ public class Ghost {
                 timeline.getKeyFrames().add(right);
 
                 }timeline.play();
-                */
+
 
         }
 
+*/
+
 
     }
-}
+
 
 
 

@@ -138,7 +138,7 @@ public class Map {
                 if (p.getBoundsInParent().intersects(pellets.getBoundsInParent())) {
                     food.remove(pellets);
                     pane.getChildren().remove(pellets);
-                    currentScore++;
+                    int i = currentScore++;
                     System.out.println("Score: " + currentScore);
 
                 }
@@ -164,32 +164,28 @@ public class Map {
 
             if (monster.getBoundsInParent().intersects(vegg.getBoundsInParent())) {
 
-
                 //LEFT COLLISION
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
-                    monster.setTranslateX(monster.getTranslateX() + 0.1);
+                    monster.setTranslateX(monster.getTranslateX() + 0.5);
 
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
-                    monster.setTranslateX(monster.getTranslateX() - 0.1);
+                    monster.setTranslateX(monster.getTranslateX() - 0.5);
 
 
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
-                    monster.setTranslateY(monster.getTranslateY() - 0.1);
+                    monster.setTranslateY(monster.getTranslateY() - 0.5);
 
 
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
-                    monster.setTranslateY(monster.getTranslateY() + 0.1);
+                    monster.setTranslateY(monster.getTranslateY() + 0.5);
                     timeline.getKeyFrames().add(right);
                     timeline.play();
-
-
-
 
                 }
 
@@ -202,7 +198,8 @@ public class Map {
 
         }
     }
-    }
+
+}
 
     /*
 public void matForPacMan(Node p) {
