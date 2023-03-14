@@ -45,15 +45,7 @@ public class Ghost {
         GhostOrange.setFill(Color.ORANGE);
 
     }
-    //Første bevegelsen for Ghost
-    // for å komme seg ut av basen til kollidering
-    // etter kollidering skal de "kunne" bevege av seg selv og velge en vei etter
-    // kollidering ved hjelp av en annen metode i Map-klassen
-    public void firstMove(Node monster) {
-    TranslateTransition translate = new TranslateTransition(Duration.millis(100), monster);
-    translate.setByY(-15);
-    translate.play();
-    }
+
 }
 
 

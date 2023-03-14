@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
+import static com.example.oblig.Map.*;
 import static javafx.scene.paint.Color.BLACK;
 
 
@@ -77,30 +78,33 @@ public class Main extends Application {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+                //MAT OG VEGG COLLISION
+                kart.checkCollision(player.pacman);
+                kart.matForPacMan(player.pacman);
+                kart.energi(player.pacman);
+                // BEVEGELSE
+                player.controller();
+
                 //GAMEOVER // KOLLISJON mellom spiller og ghost
                 kart.playerCollideGhost(player.pacman, ghost.GhostOrange);
                 kart.playerCollideGhost(player.pacman, ghost.GhostPink);
                 kart.playerCollideGhost(player.pacman, ghost.GhostRed);
                 kart.playerCollideGhost(player.pacman, ghost.GhostBlue);
 
-                //COLLISION og BEVEGELSE I DET DE KOLLIDERER
-                kart.checkCollision(player.pacman);
-                kart.checkCollisionGhost(ghost.GhostOrange);
-                kart.checkCollisionGhost(ghost.GhostBlue);
-                kart.checkCollisionGhost(ghost.GhostRed);
-                kart.checkCollisionGhost(ghost.GhostPink);
-                //MAT
-                kart.matForPacMan(player.pacman);
-                // BEVEGELSE
-                player.controller();
-                // START BEVEGELSE SLIK AT DE GÅR UT AV BOKSEN
-                ghost.firstMove(ghost.GhostOrange);
-                ghost.firstMove(ghost.GhostPink);
-                ghost.firstMove(ghost.GhostRed);
-                ghost.firstMove(ghost.GhostBlue);
-
+                //BEVEGELSE I DET DE KOLLIDERER
+                //ORANSJE
+                kart.checkCollisionGhostOrange(ghost.GhostOrange);
+                kart.GhostDirection(ghost.GhostOrange, randomMovementOrange);
+                //BLÅ
+                kart.checkCollisionGhostBlue(ghost.GhostBlue);
+                kart.GhostDirection(ghost.GhostBlue, randomMovementBlue);
+                //RØD
+                kart.checkCollisionGhostRed(ghost.GhostRed);
+                kart.GhostDirection(ghost.GhostRed, randomMovementRed);
+                //ROSA
+                kart.checkCollisionGhostPink(ghost.GhostPink);
+                kart.GhostDirection(ghost.GhostPink, randomMovementPink);
             }
-
         };
         animationTimer.start();
 

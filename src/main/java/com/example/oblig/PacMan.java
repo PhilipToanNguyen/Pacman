@@ -41,22 +41,22 @@ public class PacMan {
             public void handle(KeyEvent event) {
                 TranslateTransition translate = new TranslateTransition(Duration.millis(30), pacman);
                 if (event.getCode() == KeyCode.D) {
-                    translate.setByX(+3);
+                    translate.setByX(+6);
                     translate.play();
 
                     //System.out.println(pacman.getTranslateX());
                 } else if (event.getCode() == KeyCode.A) {
-                    translate.setByX(-3);
+                    translate.setByX(-6);
                     translate.play();
 
                     //System.out.println(pacman.getTranslateX());
                 } else if (event.getCode() == KeyCode.S) {
-                    translate.setByY(+3);
+                    translate.setByY(+6);
                     translate.play();
 
                     // System.out.println(pacman.getTranslateY());
                 } else if (event.getCode() == KeyCode.W) {
-                    translate.setByY(-3);
+                    translate.setByY(-6);
                     translate.play();
                     //System.out.println(pacman.getTranslateY());
                 }//System.out.println(pacman.getTranslateX() + "\n" + pacman.getTranslateY());
