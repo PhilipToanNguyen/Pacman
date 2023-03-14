@@ -18,22 +18,23 @@ import javafx.util.Duration;
 
 public class PacMan {
 
-    public static boolean alive = true;
     Circle pacman;
-    int x = 30;
-    int y = 30;
-
+    Sound sound = new Sound();
+    //Konstruktør
     public PacMan() {
         this.pacman = pacman;
         pacMan();
+
     }
 
     public void pacMan() {
         pacman = new Circle(30 * 14, 15 * 45, 12);
         pacman.setFill(Color.YELLOW);
         controller();
+
     }
 
+    //Pacman sine bevegelser ved bruk av WASD.
     public void controller() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -42,7 +43,6 @@ public class PacMan {
                 if (event.getCode() == KeyCode.D) {
                     translate.setByX(+3);
                     translate.play();
-
 
                     //System.out.println(pacman.getTranslateX());
                 } else if (event.getCode() == KeyCode.A) {
@@ -66,6 +66,7 @@ public class PacMan {
 
     }
 }
+
 
 
 

@@ -13,7 +13,6 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-import static com.example.oblig.PacMan.alive;
 
 public class Ghost {
     Rectangle GhostRed;
@@ -21,79 +20,41 @@ public class Ghost {
     Rectangle GhostPink;
     Rectangle GhostOrange;
 
-    public Ghost() throws InterruptedException {
+    //Konstruktør
+    public Ghost()  {
         this.GhostRed = GhostRed;
         this.GhostBlue = GhostBlue;
         this.GhostPink = GhostPink;
         this.GhostOrange = GhostOrange;
-        //RED
+
+        //Lager ghost
+        //x-posisjon, y-posisjon, bredde, høyde
+        //Lager RED
         GhostRed = new Rectangle(30 * 14, 30 * 13, 30, 30);
         GhostRed.setFill(Color.RED);
-        //BLUE
+        //Lager BLUE
         GhostBlue = new Rectangle(30 * 15, 30 * 13, 30, 30);
         GhostBlue.setFill(Color.CYAN);
 
-        //PINK
+        //Lager PINK
         GhostPink = new Rectangle(30 * 12, 30 * 13, 30, 30);
         GhostPink.setFill(Color.PINK);
 
-        //ORANGE
+        //Lager ORANGE
         GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
         GhostOrange.setFill(Color.ORANGE);
 
     }
-
-    public void move(Node monster) {
+    //Første bevegelsen for Ghost
+    // for å komme seg ut av basen til kollidering
+    // etter kollidering skal de "kunne" bevege av seg selv og velge en vei etter
+    // kollidering ved hjelp av en annen metode i Map-klassen
+    public void firstMove(Node monster) {
     TranslateTransition translate = new TranslateTransition(Duration.millis(100), monster);
-    translate.setByY(-30);
+    translate.setByY(-15);
     translate.play();
     }
-/*
-    public void movement(Node monster) {
-        Timeline timeline = new Timeline();
-        int randomMovement = (int) (Math.random() * 4);
-        if (randomMovement == 0) {
-
-            final KeyValue opp = new KeyValue(monster.translateYProperty(), -60);
-            final KeyFrame up = new KeyFrame(Duration.millis(100), opp);
-            timeline.getKeyFrames().add(up);
-            timeline.play();
-
-
-
-            /*
-            if (randomMovement == 0) {
-                final KeyValue opp = new KeyValue(monster.translateYProperty(), -30);
-                final KeyFrame up = new KeyFrame(Duration.millis(1000), opp);
-                timeline.getKeyFrames().add(up);
-
-
-            } else if (randomMovement == 1) {
-                final KeyValue ned = new KeyValue(monster.translateYProperty(), +30);
-                final KeyFrame down = new KeyFrame(Duration.millis(1000), ned);
-                timeline.getKeyFrames().add(down);
-
-
-            } else if (randomMovement == 2) {
-                final KeyValue venstre = new KeyValue(monster.translateXProperty(), -30);
-                final KeyFrame left = new KeyFrame(Duration.millis(1000), venstre);
-                timeline.getKeyFrames().add(left);
-
-            }
-                else if (randomMovement == 3) {
-                final KeyValue hoyre = new KeyValue(monster.translateXProperty(), +30);
-                final KeyFrame right = new KeyFrame(Duration.millis(1000), hoyre);
-                timeline.getKeyFrames().add(right);
-
-                }timeline.play();
-
-
-        }
-
-*/
-
-
-    }
+}
 
 
 

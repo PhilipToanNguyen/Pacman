@@ -94,10 +94,10 @@ public class Main extends Application {
                 // BEVEGELSE
                 player.controller();
                 // START BEVEGELSE SLIK AT DE GÅR UT AV BOKSEN
-                ghost.move(ghost.GhostOrange);
-                ghost.move(ghost.GhostPink);
-                ghost.move(ghost.GhostRed);
-                ghost.move(ghost.GhostBlue);
+                ghost.firstMove(ghost.GhostOrange);
+                ghost.firstMove(ghost.GhostPink);
+                ghost.firstMove(ghost.GhostRed);
+                ghost.firstMove(ghost.GhostBlue);
 
             }
 

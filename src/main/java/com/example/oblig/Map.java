@@ -209,18 +209,20 @@ public class Map {
 
     //Metode for kollisjon mellom spiller og ghost, slik at spilleren må unngå ghost.
     public void playerCollideGhost(Node player, Node monster) {
-        int i = life;
-
+        Text tekst = new Text(-60, 20, "Antall liv:" + life);
+        tekst.setFont(Font.font ("Verdana", 32));
+        tekst.setFill(Color.YELLOW);
+        tekst.setLayoutX(screenWidth/2 - 30);
+        tekst.setLayoutY(screenHeight/2);
         if (player.getBoundsInParent().intersects(monster.getBoundsInParent())) {
                 life--;
                 player.setTranslateX(0);
                 player.setTranslateY(0);
-            System.out.println(life);
+                System.out.println("Antall Liv: " + life);
 
 
                 if (life == 0 ) {
-                    Text text = new Text();
-                    text.setText("Gameover");
+                    Text text = new Text(-60, 30, "Gameover");
                     text.setFont(Font.font ("Verdana", 24));
                     text.setFill(Color.YELLOW);
                     VBox loseinfo = new VBox(text);

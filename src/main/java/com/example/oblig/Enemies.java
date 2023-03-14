@@ -6,7 +6,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import static com.example.oblig.PacMan.alive;
 
 // Abstract class
 abstract class Enemies {
