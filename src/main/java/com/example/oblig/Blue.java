@@ -10,12 +10,12 @@ public class Blue extends Enemies  {
     public Blue() {
         this.GhostBlue = GhostBlue;
         GhostBlue = new Rectangle(30 * 15, 30 * 13, 30, 30);
-        GhostBlue.setFill(Color.CYAN);
+        GhostBlue.setFill(Color.BLUE);
 
     }
 
     @Override
-    public void GhostDirection(Node GhostBlue, int randomMovementBlue) {
+    public void GhostDirection(Node monster, int randomMovementBlue) {
         super.GhostDirection(GhostBlue, randomMovementBlue);
     }
 }

@@ -41,7 +41,7 @@ public class Main extends Application {
         //Kaller PLAYER
         PacMan player = new PacMan();
 
-        //SCORE
+        //SCORE og STYLING
         currentScoreText = new Text("Score: " + currentScore);
         currentScoreText.setFont(Font.font("Comic Sans MS", 18));
         currentScoreText.setStyle("-fx-text-Informasjon og fyll: Yellow;");
