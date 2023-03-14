@@ -1,20 +1,24 @@
 package com.example.oblig;
-
-import javafx.animation.TranslateTransition;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 
-public abstract class Blue extends Enemies {
-    Rectangle blue;
-    public Blue () throws InterruptedException {
-        this.blue = blue;
-        Body(30 * 15, 30 * 13, 30, 30, Color.BLUE);
-        //Movement();
+public class Blue extends Enemies  {
+    Rectangle GhostBlue;
+    public static int randomMovementBlue;
+
+    public Blue() {
+        this.GhostBlue = GhostBlue;
+        GhostBlue = new Rectangle(30 * 15, 30 * 13, 30, 30);
+        GhostBlue.setFill(Color.CYAN);
+
     }
 
-
-        }
+    @Override
+    public void GhostDirection(Node GhostBlue, int randomMovementBlue) {
+        super.GhostDirection(GhostBlue, randomMovementBlue);
+    }
+}
 
 
 
