@@ -38,13 +38,13 @@ public class Map {
             {0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0},
             {0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0},
             {0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0},
-            {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 4, 4, 4, 4, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-            {0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-            {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-            {0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0},
-            {0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0},
-            {0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0},
-            {0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0},
+            {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 4, 4, 4, 4, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+            {0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 3, 3, 3, 3, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0},
+            {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+            {0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0},
+            {0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0},
+            {0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0},
+            {0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0},
             {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             {0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0},
             {0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0},
@@ -68,7 +68,7 @@ public class Map {
 
     /**
      * Metode for loade map
-     *  Denne metoden kalles under konstruktøren.
+     * Denne metoden kalles under konstruktøren.
      */
 
     public void loadMap() {
@@ -89,7 +89,7 @@ public class Map {
 
                     //Effekt
                     FadeTransition fade = new FadeTransition(Duration.seconds(2), mat);
-                    fade.setToValue(0.5);
+                    fade.setToValue(0.6);
                     fade.setCycleCount(Animation.INDEFINITE);
                     fade.play();
 
@@ -126,9 +126,11 @@ public class Map {
             }
         }
     }
+
     /**
      * Metode for kollisjon mellom spiller og vegg.
      * Ment for at spilleren ikke skal gå igjennom veggen
+     *
      * @param p er Pacman.
      */
     public void checkCollision(Node p) {
@@ -162,15 +164,24 @@ public class Map {
     /**
      * Metode for kollisjon mellom spiller og mat.
      * Ment for at spilleren/pacman skal "spise opp" maten
+     *
      * @param p er Pacman.
      */
     public void matForPacMan(Node p) {
         try {
             for (Node pellets : food) {
                 if (p.getBoundsInParent().intersects(pellets.getBoundsInParent())) {
+                    // Text text = new Text("Poeng: " + currentScore);
+                    // text.setFont(Font.font("Verdana", 14));
+                    // text.setFill(Color.RED);
+                    // VBox antall = new VBox(text);
+                    int i = currentScore++;
+                    //antall.setLayoutX(screenWidth / 2 - 30);
+                    //antall.setLayoutY(screenHeight / 2);
                     food.remove(pellets);
                     pane.getChildren().remove(pellets);
-                    int i = currentScore++;
+                    // pane.getChildren().add(antall);
+
                     System.out.println("Score: " + currentScore);
 
                 }
@@ -184,6 +195,7 @@ public class Map {
      * Metode for kollisjon mellom spiller og energikapsel.
      * Ment for at spilleren/pacman skal "spise opp" maten
      * En liten periode skal pacman få muligheten til å ta ghost
+     *
      * @param p er Pacman.
      */
     public void energi(Node p) {
@@ -205,15 +217,18 @@ public class Map {
      * Metode for kollisjon mellom spiller og Ghost.
      * Ment for at ghost/pacman skal kollidere med hverandre
      * Ved kollidering taper/mister spilleren liv.
+     *
      * @param monster er Ghost.
-     * @param player er pacman.
+     * @param player  er pacman.
      */
     public void playerCollideGhost(Node player, Node monster) {
+        /*
         Text tekst = new Text(-60, 20, "Antall liv:" + life);
         tekst.setFont(Font.font("Verdana", 32));
         tekst.setFill(Color.YELLOW);
         tekst.setLayoutX(screenWidth / 2 - 30);
         tekst.setLayoutY(screenHeight / 2);
+        */
         if (player.getBoundsInParent().intersects(monster.getBoundsInParent())) {
             life--;
             player.setTranslateX(0);
@@ -240,6 +255,7 @@ public class Map {
      * Metode for veggkollisjon for oransje ghost.
      * Ved kollisjon er det meningen at ghost ikke skal passere igjennom vegger
      * Ved kollisjon er det meningen de skal gå en annen retning som ikke kolliderer
+     *
      * @param monster er Ghost.
      */
     public void checkCollisionGhostOrange(Node monster) {
@@ -249,28 +265,28 @@ public class Map {
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() - 1);
                     randomMovementOrange = (int) (Math.random() * 4);
-                    if(randomMovementOrange == 0) {
+                    if (randomMovementOrange == 0) {
                         randomMovementOrange = (int) (Math.random() * 4);
                     }
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() - 1);
-                    if(randomMovementOrange == 1) {
+                    if (randomMovementOrange == 1) {
                         randomMovementOrange = (int) (Math.random() * 4);
                     }
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() + 1);
-                    if(randomMovementOrange == 2) {
+                    if (randomMovementOrange == 2) {
                         randomMovementOrange = (int) (Math.random() * 4);
                     }
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() + 1);
-                    if(randomMovementOrange == 3) {
+                    if (randomMovementOrange == 3) {
                         randomMovementOrange = (int) (Math.random() * 4);
                     }
                 }
@@ -282,6 +298,7 @@ public class Map {
      * Metode for veggkollisjon for rød ghost.
      * Ved kollisjon er det meningen at ghost ikke skal passere igjennom vegger
      * Ved kollisjon er det meningen de skal gå en annen retning som ikke kolliderer
+     *
      * @param monster er Ghost.
      */
     public void checkCollisionGhostRed(Node monster) {
@@ -292,28 +309,28 @@ public class Map {
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() - 1);
                     randomMovementRed = (int) (Math.random() * 4);
-                    if(randomMovementRed == 0) {
+                    if (randomMovementRed == 0) {
                         randomMovementRed = (int) (Math.random() * 4);
                     }
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() - 1);
-                    if(randomMovementRed == 1) {
+                    if (randomMovementRed == 1) {
                         randomMovementRed = (int) (Math.random() * 4);
                     }
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() + 1);
-                    if(randomMovementRed == 2) {
+                    if (randomMovementRed == 2) {
                         randomMovementRed = (int) (Math.random() * 4);
                     }
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() + 1);
-                    if(randomMovementRed == 3) {
+                    if (randomMovementRed == 3) {
                         randomMovementRed = (int) (Math.random() * 4);
                     }
                 }
@@ -325,6 +342,7 @@ public class Map {
      * Metode for veggkollisjon for blå ghost.
      * Ved kollisjon er det meningen at ghost ikke skal passere igjennom vegger
      * Ved kollisjon er det meningen de skal gå en annen retning som ikke kolliderer
+     *
      * @param monster er Ghost.
      */
     public void checkCollisionGhostBlue(Node monster) {
@@ -335,28 +353,28 @@ public class Map {
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() - 1);
                     randomMovementBlue = (int) (Math.random() * 4);
-                    if(randomMovementBlue == 0) {
+                    if (randomMovementBlue == 0) {
                         randomMovementBlue = (int) (Math.random() * 4);
                     }
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() - 1);
-                    if(randomMovementBlue == 1) {
+                    if (randomMovementBlue == 1) {
                         randomMovementBlue = (int) (Math.random() * 4);
                     }
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() + 1);
-                    if(randomMovementBlue == 2) {
+                    if (randomMovementBlue == 2) {
                         randomMovementBlue = (int) (Math.random() * 4);
                     }
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() + 1);
-                    if(randomMovementBlue == 3) {
+                    if (randomMovementBlue == 3) {
                         randomMovementBlue = (int) (Math.random() * 4);
                     }
                 }
@@ -368,6 +386,7 @@ public class Map {
      * Metode for veggkollisjon for rosa ghost.
      * Ved kollisjon er det meningen at ghost ikke skal passere igjennom vegger
      * Ved kollisjon er det meningen de skal gå en annen retning som ikke kolliderer
+     *
      * @param monster er Ghost.
      */
     public void checkCollisionGhostPink(Node monster) {
@@ -378,28 +397,28 @@ public class Map {
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() - 1);
                     randomMovementPink = (int) (Math.random() * 4);
-                    if(randomMovementPink == 0) {
+                    if (randomMovementPink == 0) {
                         randomMovementPink = (int) (Math.random() * 4);
                     }
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() - 1);
-                    if(randomMovementPink == 1) {
+                    if (randomMovementPink == 1) {
                         randomMovementPink = (int) (Math.random() * 4);
                     }
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() + 1);
-                    if(randomMovementPink == 2) {
+                    if (randomMovementPink == 2) {
                         randomMovementPink = (int) (Math.random() * 4);
                     }
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() + 1);
-                    if(randomMovementPink == 3) {
+                    if (randomMovementPink == 3) {
                         randomMovementPink = (int) (Math.random() * 4);
                     }
                 }
@@ -407,7 +426,39 @@ public class Map {
         }
     }
 
+    /**
+     * Metode for kollisjon mellom Ghost og Ghost.
+     * Ment for at ghost/pacman skal kollidere med hverandre
+     * Ved kollidering skal de velge en annen retning istedet for å gå igjennom hverandre
+     * Ikke fullstendig kode, men brukt på Oransje og Rød
+     * @param monster er Ghost.
+     * @param monster2 er annen Ghost
+     */
+    public void ghostCollideGhost(Node monster, Node monster2) {
+
+        if (monster.getBoundsInParent().intersects(monster2.getBoundsInParent())) {
+            //LEFT COLLISION
+            if (monster.getTranslateX() < monster2.getTranslateX() ) {
+                monster.setTranslateX(monster.getTranslateX() - 1);
+            }
+            //DOWN COLLISION
+            if (monster.getTranslateY() > monster2.getTranslateY()) {
+                monster.setTranslateY(monster.getTranslateY() - 1);
+            }
+            //UP COLLISION
+            if (monster.getTranslateY() < monster2.getTranslateY()) {
+                monster.setTranslateY(monster.getTranslateY() + 1);
+            }
+            //RIGHT COLLISION
+            if (monster.getTranslateX() > monster2.getTranslateX()) {
+                monster.setTranslateX(monster.getTranslateX() + 1);
+            }
+
+        }
+    }
 }
+
+
     
 
 

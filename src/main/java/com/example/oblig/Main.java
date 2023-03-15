@@ -1,5 +1,4 @@
 package com.example.oblig;
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,7 +9,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import static com.example.oblig.Ghost.*;
-
 
 public class Main extends Application {
 
@@ -25,7 +23,6 @@ public class Main extends Application {
     //SCREEN SETTINGS
     public static final int screenWidth = 840;
     public static final int screenHeight = 900;
-
 
     public void start(Stage primaryStage) throws IOException, InterruptedException {
         //Oppretter
@@ -80,6 +77,9 @@ public class Main extends Application {
                 //ROSA
                 kart.checkCollisionGhostPink(ghost.GhostPink);
                 ghost.GhostDirection(ghost.GhostPink, randomMovementPink);
+
+                // RØD OG ORANSJE KOLLISJON
+                kart.ghostCollideGhost(ghost.GhostOrange, ghost.GhostRed);
             }
         };
         animationTimer.start();
