@@ -49,7 +49,6 @@ public class Main extends Application {
          */
         PacMan player = new PacMan(30 * 14,15 * 45,12);
 
-
         /**
          * AnimationTimer blir brukt for oppdatering for bevegelser og collisions
          * fjerning av mat og energimat.

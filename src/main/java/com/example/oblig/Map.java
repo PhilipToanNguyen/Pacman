@@ -244,7 +244,7 @@ public class Map {
                 text2.setFill(Color.RED);
                 VBox loseinfo = new VBox(text, text2);
                 player.setVisible(false);
-                loseinfo.setLayoutX(screenWidth / 2 - 30);
+                loseinfo.setLayoutX(screenWidth / 2 - 60);
                 loseinfo.setLayoutY(screenHeight / 2);
                 pane.getChildren().add(loseinfo);
             }

@@ -30,7 +30,7 @@ public class PacMan extends Circle {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                TranslateTransition translate = new TranslateTransition(Duration.millis(30), pacman);
+                TranslateTransition translate = new TranslateTransition(Duration.millis(50), pacman);
                 if (event.getCode() == KeyCode.D) {
                     translate.setByX(+6);
                     translate.play();

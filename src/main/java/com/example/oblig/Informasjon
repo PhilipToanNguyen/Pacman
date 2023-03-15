@@ -1,0 +1,17 @@
+ Student:
+ Philip Nguyen - 161218
+
+ Kommentarer:
+ Planen for å gjennomføre oppgaven var i utgangspunktet-
+ - Loade map gjennom scanner.
+ - Bruke bilder som sprites.
+ - Bruke Parent og Sub classes på Ghost
+ - Legge til Sound
+
+ Men det gikk ikke som planlagt og mye av tiden ble brukt ifht til at programmet skulle kjøre
+ Jeg loadet kartet gjennom en for-loop i stedet og brukte arrays.
+ Jeg brukte shapes for Pacman og ghost istedet som i utgangspunktet skulle være placeholders
+ Jeg brukte ikke mye extended, men har lagt til klasser
+ Enemies(Parent) og Red,Blue,Pink,Orange (Sub) som skal egentlig erstatte Ghost-klassen
+ Foreløpig blir ikke Enemies, Blue,Red,Pink, Orange klassene ikke brukt.
+ Ikke bilde filene eller lydfilene heller.

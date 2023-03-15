@@ -26,7 +26,7 @@ public class Pink extends Enemies  {
      * @param retning er variabel med math.random som gir heltall.
      * Ved bruk av math.random skal det velges tilfeldig et av casene (0-3)
      */
-    public void GhostDirection(Node monster, int retning) {
+    public void EnemyDirection(Node monster, int retning) {
         switch (retning) {
             case 0:
                 monster.setTranslateX(monster.getTranslateX() - 0.3);break;
