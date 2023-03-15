@@ -3,54 +3,63 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.io.IOException;
 import static com.example.oblig.Ghost.*;
 
 public class Main extends Application {
-
+    /**
+     Scene og pane
+     */
     public static Scene scene;
     public static Pane pane;
 
-    //Score info
-   public static Text currentScoreText;
+    /**
+     Score info
+     */
    public static int currentScore = 0;
    public static int  life = 3;
-
+    /**
+   Skjermoppløsning
+     */
     //SCREEN SETTINGS
     public static final int screenWidth = 840;
     public static final int screenHeight = 900;
 
-    public void start(Stage primaryStage) throws IOException, InterruptedException {
-        //Oppretter
+    public void start(Stage primaryStage) {
+
+        /**
+         Oppretter
+         */
         pane = new Pane();
         scene = new Scene(pane, screenWidth, screenHeight);
 
-        //Legg til Map
+        /**
+         Legger til map som kart
+         */
         Map kart = new Map();
 
-        //Kaller GHOST
+        /**
+         Kaller ghost
+         */
         Ghost ghost = new Ghost();
+        Blue blue = new Blue(30 * 15, 30 * 13, 30, 30);
 
-        //Kaller PLAYER
-        PacMan player = new PacMan();
+        /**
+         Kaller spiller/pacman
+         */
+        PacMan player = new PacMan(30 * 14,15 * 45,12);
 
-        //SCORE og STYLING
-        currentScoreText = new Text("Score: " + currentScore);
-        currentScoreText.setFont(Font.font("Comic Sans MS", 18));
-        currentScoreText.setStyle("-fx-text-Informasjon og fyll: Yellow;");
-        VBox score = new VBox(currentScoreText);
-        score.setLayoutX(screenWidth/2 - 30);
-        score.setLayoutY(screenHeight/2);
 
+        /**
+         * AnimationTimer blir brukt for oppdatering for bevegelser og collisions
+         * fjerning av mat og energimat.
+         * Legger vi f.eks matForPacMan utenfor AnimationTimer så vil ikke
+         * PacMan kunne fjerne maten mer enn 1 gang.
+         */
         //Animation // FPS
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-
                 //MAT OG VEGG COLLISION
                 kart.checkCollision(player.pacman);
                 kart.matForPacMan(player.pacman);
@@ -78,19 +87,24 @@ public class Main extends Application {
                 kart.checkCollisionGhostPink(ghost.GhostPink);
                 ghost.GhostDirection(ghost.GhostPink, randomMovementPink);
 
-                // RØD OG ORANSJE KOLLISJON
+                // RØD OG ORANSJE KOLLISJON = NY RETNING
                 kart.ghostCollideGhost(ghost.GhostOrange, ghost.GhostRed);
             }
         };
         animationTimer.start();
 
-        //Styling
+        /**
+         Styling
+         */
         pane.setStyle("-fx-background-color : black");
         pane.setPrefSize(screenWidth, screenHeight);
 
-        //Legg til
+        /**
+         Legg til Ghost og Pacman i pane
+         */
         pane.getChildren().add(player.pacman); //PACMAN
         pane.getChildren().addAll(ghost.GhostRed, ghost.GhostPink, ghost.GhostOrange, ghost.GhostBlue);  //ENEMIES
+        pane.getChildren().add(blue);
 
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");

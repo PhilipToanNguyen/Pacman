@@ -213,7 +213,7 @@ public class Map {
         }
     }
 
-    /**
+    /**d
      * Metode for kollisjon mellom spiller og Ghost.
      * Ment for at ghost/pacman skal kollidere med hverandre
      * Ved kollidering taper/mister spilleren liv.
@@ -457,6 +457,7 @@ public class Map {
         }
     }
 }
+
 
 
     

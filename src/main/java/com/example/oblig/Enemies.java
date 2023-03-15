@@ -1,36 +1,28 @@
 package com.example.oblig;
 
-import javafx.animation.TranslateTransition;
-import javafx.scene.Node;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 
-
-// Abstract class
-abstract class Enemies {
-    public Enemies() {
-
-    }
+/**
+ Parent-class med extended Rectangle
+ for Red, Blue, Pink og Orange class
+ */
+public class Enemies extends Rectangle{
+    int posisjonx;
+    int posisjony;
+    int bredde;
+    int hoyde;
 
     /**
-     * Denne metoden brukes for å bestemme retningen som ghosten skal automatisk gå i.
-     * Denne metoden henger sammen med checkCollisionGhostFarge(Oransje, Rød, Blå og Rosa)
-     * @param monster er Ghost.
-     * @param retning er variabel med math.random som gir heltall.
-     * Ved bruk av math.random skal det velges tilfeldig et av casene (0-3)
+     * Konstruktør med parametere for en rectangle/Ghost
      */
-    public void GhostDirection(Node monster, int retning) {
-        switch (retning) {
-            case 0:
-                monster.setTranslateX(monster.getTranslateX() - 0.3);break;
-            case 1:
-                monster.setTranslateY(monster.getTranslateY() - 0.3);break;
-            case 2:
-                monster.setTranslateY(monster.getTranslateY() + 0.3);break;
-            case 3:
-                monster.setTranslateX(monster.getTranslateX() + 0.3);break;
+    public Enemies(int posisjonx, int posisjony, int bredde, int hoyde) {
+        this.posisjonx = posisjonx;
+        this.posisjony = posisjony;
+        this.bredde = bredde;
+        this.hoyde = hoyde;
+
         }
+
     }
-}
+
 

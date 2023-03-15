@@ -7,20 +7,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
-public class PacMan {
+public class PacMan extends Circle {
     Circle pacman;
+    int x ;
+    int y ;
+    int r ;
 
     //Konstruktør
-    public PacMan() {
-        this.pacman = pacman;
-        pacMan();
-    }
-
-    public void pacMan() {
-        pacman = new Circle(30 * 14, 15 * 45, 12);
+    public PacMan(int x, int y, int r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        pacman = new Circle(x,y,r);
         pacman.setFill(Color.YELLOW);
         controller();
     }
+
     /**
      * Metode for å bevege Pacman ved WASD
      */
