@@ -27,25 +27,25 @@ public class Ghost {
         /**
          * Lager Red
          */
-        GhostRed = new Rectangle(30 * 14, 30 * 13, 30, 30);
+        GhostRed = new Rectangle(30 * 14, 30 * 13, 25, 25);
         GhostRed.setFill(Color.RED);
 
         /**
          * Lager Blue
          */
-        GhostBlue = new Rectangle(30 * 15, 30 * 13, 30, 30);
+        GhostBlue = new Rectangle(30 * 15, 30 * 13, 25, 25);
         GhostBlue.setFill(Color.CYAN);
 
         /**
          * Lager Pink
          */
-        GhostPink = new Rectangle(30 * 12, 30 * 13, 30, 30);
+        GhostPink = new Rectangle(30 * 12, 30 * 13, 25, 25);
         GhostPink.setFill(Color.PINK);
 
         /**
          * Lager Orange
          */
-        GhostOrange = new Rectangle(30 * 13, 30 * 13, 30, 30);
+        GhostOrange = new Rectangle(30 * 13, 30 * 13, 25, 25);
         GhostOrange.setFill(Color.ORANGE);
 
     }

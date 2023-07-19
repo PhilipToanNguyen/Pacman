@@ -13,7 +13,9 @@ public class PacMan extends Circle {
     int y ;
     int r ;
 
-    //Konstruktør
+    /**
+     * Konstruktør
+     */
     public PacMan(int x, int y, int r) {
         this.x = x;
         this.y = y;
@@ -30,7 +32,7 @@ public class PacMan extends Circle {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                TranslateTransition translate = new TranslateTransition(Duration.millis(50), pacman);
+                TranslateTransition translate = new TranslateTransition(Duration.millis(30), pacman);
                 if (event.getCode() == KeyCode.D) {
                     translate.setByX(+6);
                     translate.play();

@@ -8,7 +8,6 @@ import javafx.scene.shape.Rectangle;
  Sub-class med extended Enemies
  */
 public class Orange extends Enemies  {
-    Rectangle GhostOrange;
     public static int randomMovementOrange;
 
     /**

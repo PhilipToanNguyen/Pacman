@@ -9,8 +9,5 @@
         <module name="Oblig" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Oblig" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

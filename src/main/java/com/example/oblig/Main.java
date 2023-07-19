@@ -42,12 +42,15 @@ public class Main extends Application {
          Kaller ghost
          */
         Ghost ghost = new Ghost();
-        Blue blue = new Blue(30 * 15, 30 * 13, 30, 30);
+        Blue blue = new Blue(30 * 15, 30 * 13, 25, 25);
+        Red red = new Red(30 * 14, 30 * 13, 25, 25);
+        Pink pink = new Pink(30 * 12, 30 * 13, 25, 25);
+        Orange orange = new Orange(30 * 13, 30 * 13, 25, 25);
 
         /**
          Kaller spiller/pacman
          */
-        PacMan player = new PacMan(30 * 14,15 * 45,12);
+        PacMan player = new PacMan(30 * 14,15 * 45, 12);
 
         /**
          * AnimationTimer blir brukt for oppdatering for bevegelser og collisions
@@ -103,7 +106,7 @@ public class Main extends Application {
          */
         pane.getChildren().add(player.pacman); //PACMAN
         pane.getChildren().addAll(ghost.GhostRed, ghost.GhostPink, ghost.GhostOrange, ghost.GhostBlue);  //ENEMIES
-        pane.getChildren().add(blue);
+        //pane.getChildren().addAll(blue,red,pink,orange);
 
         primaryStage.setResizable(false);
         primaryStage.setTitle("PacMan 2022");

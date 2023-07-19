@@ -309,30 +309,22 @@ public class Map {
                 if (monster.getTranslateX() < vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() - 1);
                     randomMovementRed = (int) (Math.random() * 4);
-                    if (randomMovementRed == 0) {
-                        randomMovementRed = (int) (Math.random() * 4);
-                    }
+
                 }
                 //DOWN COLLISION
                 if (monster.getTranslateY() > vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() - 1);
-                    if (randomMovementRed == 1) {
-                        randomMovementRed = (int) (Math.random() * 4);
-                    }
+
                 }
                 //UP COLLISION
                 if (monster.getTranslateY() < vegg.getTranslateY()) {
                     monster.setTranslateY(monster.getTranslateY() + 1);
-                    if (randomMovementRed == 2) {
-                        randomMovementRed = (int) (Math.random() * 4);
-                    }
+
                 }
                 //RIGHT COLLISION
                 if (monster.getTranslateX() > vegg.getTranslateX()) {
                     monster.setTranslateX(monster.getTranslateX() + 1);
-                    if (randomMovementRed == 3) {
-                        randomMovementRed = (int) (Math.random() * 4);
-                    }
+
                 }
             }
         }
